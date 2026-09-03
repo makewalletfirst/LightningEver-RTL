@@ -1,0 +1,34 @@
+{
+  "port": "3008",
+  "defaultNodeIndex": 1,
+  "dbDirectoryPath": "/RTL",
+  "SSO": {
+    "rtlSSO": 0,
+    "rtlCookiePath": "",
+    "logoutRedirectLink": ""
+  },
+  "nodes": [
+    {
+      "index": 1,
+      "lnNode": "LightningEver LSP",
+      "lnImplementation": "ECL",
+      "authentication": {
+        "lnApiPassword": "<your-eclair-api-password>"
+      },
+      "settings": {
+        "userPersona": "OPERATOR",
+        "themeMode": "NIGHT",
+        "themeColor": "PURPLE",
+        "channelBackupPath": "/RTL/backups/node-1",
+        "logLevel": "INFO",
+        "lnServerUrl": "http://<your-eclair-host>:8085",
+        "swapServerUrl": "https://127.0.0.1:8081",
+        "boltzServerUrl": "https://127.0.0.1:9003",
+        "fiatConversion": false,
+        "unannouncedChannels": true,
+        "blockExplorerUrl": "https://bitever2.ever-chain.xyz"
+      }
+    }
+  ],
+  "multiPassHashed": "<SHA-256 of your operator password \u2014 see README \u00a74>"
+}

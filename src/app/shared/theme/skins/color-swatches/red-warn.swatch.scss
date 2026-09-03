@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+$red-warn-palette: (
+    50 : #f6e0e4,
+    100 : #e7b3bc,
+    200 : #d88090,
+    300 : #c84d63,
+    400 : #bc2641,
+    500 : #b00020,
+    600 : #a9001c,
+    700 : #a00018,
+    800 : #970013,
+    900 : #87000b,
+    A100 : #ffb3b6,
+    A200 : #ff8085,
+    A400 : #ff4d53,
+    A700 : #ff343b,
+  contrast: (
+    50 : rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(white, 1),
+    600: rgba(white, 1),
+    700: rgba(white, 1),
+    800: rgba(white, 1),
+    900: rgba(white, 1),
+  )
+);

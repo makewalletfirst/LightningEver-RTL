@@ -1,0 +1,40 @@
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { SharedModule } from '../../../shared/shared.module';
+import { CommonService } from '../../../shared/services/common.service';
+import { mockDataService } from '../../../shared/test-helpers/mock-services';
+
+import { CLNChannelLiquidityInfoComponent } from './channel-liquidity-info.component';
+import { DataService } from '../../../shared/services/data.service';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+
+describe('CLNChannelLiquidityInfoComponent', () => {
+  let component: CLNChannelLiquidityInfoComponent;
+  let fixture: ComponentFixture<CLNChannelLiquidityInfoComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [CLNChannelLiquidityInfoComponent],
+      imports: [SharedModule, RouterTestingModule],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+        CommonService,
+        { provide: DataService, useClass: mockDataService }
+      ]
+    }).
+      compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(CLNChannelLiquidityInfoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
