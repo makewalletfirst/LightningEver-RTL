@@ -1,0 +1,7 @@
+@use '../../../theme/styles/constants.scss' as *;
+
+.table-setting-row {
+  &:not(:first-child) {
+    margin: ($gap) 0;
+  }
+}

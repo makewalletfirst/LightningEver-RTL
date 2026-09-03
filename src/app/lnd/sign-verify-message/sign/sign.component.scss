@@ -1,0 +1,5 @@
+@use '../../../shared/theme/styles/constants.scss' as *;
+
+.signature-box {
+    padding: $gap*2;
+}

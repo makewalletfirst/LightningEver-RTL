@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@use './color-swatches/teal-primary.swatch.scss' as *;
+@use './color-swatches/red-warn.swatch.scss' as *;
+@use './color-swatches/white.swatch.scss' as *;
+@use './color-swatches/gray.swatch.scss' as *;
+
+$teal-primary: mat.m2-define-palette($teal-primary-palette, 800, 300, A200);
+$day-accent: mat.m2-define-palette($gray-palette, 800, 600, 900);
+$night-accent: mat.m2-define-palette($white-palette, 300, 600, 900);
+$red-warn: mat.m2-define-palette($red-warn-palette, 500, 300, 200);
+
+$teal-night-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $teal-primary,
+    accent: $night-accent,
+    warn: $red-warn,
+  )
+));
+
+$teal-day-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $teal-primary,
+    accent: $day-accent,
+    warn: $red-warn,
+  )
+));

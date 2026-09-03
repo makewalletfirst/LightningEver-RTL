@@ -1,0 +1,48 @@
+# LightningEver fork — CI on every push / PR to 260530 or main.
+#
+# Builds the Angular frontend and TypeScript backend so a green check
+# means the code on this branch is consistent and compiles cleanly.
+# Upstream RTL's existing workflows only fire on v* tags or releases,
+# which is why nothing was running on this fork's branch pushes.
+
+name: LightningEver CI
+
+on:
+  push:
+    branches: [ "260530", "main" ]
+  pull_request:
+    branches: [ "260530", "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build (Angular + backend) on Node 22
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies (legacy peer deps — upstream Angular churn)
+        run: npm ci --legacy-peer-deps --no-audit --no-fund
+
+      - name: Build Angular frontend
+        run: npm run buildfrontend
+
+      - name: Build TypeScript backend
+        run: npm run buildbackend
+
+      - name: Smoke check built artifacts
+        run: |
+          test -f frontend/index.html        && echo "✓ frontend/index.html"
+          test -d frontend/assets            && echo "✓ frontend/assets/"
+          test -f backend/utils/config.js    && echo "✓ backend compiled"
+          grep -q "LightningEver RTL" frontend/index.html && echo "✓ title patched"
+          grep -q "og:image"          frontend/index.html && echo "✓ OG meta present"
